@@ -266,13 +266,24 @@ let levelTen = [
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 ]
 
+let levelEleven = [
+  0, 2, 2, 2, 2, 2, 2, 2, 
+  0, 2, 3, 1, 1, 1, 1, 2,
+  0, 2, 2, 2, 2, 2, 1, 2,
+  0, 2, 1, 1, 1, 1, 1, 2,
+  0, 2, 1, 2, 2, 2, 2, 2,
+  0, 2, 1, 1, 1, 1, 1, 2,
+  0, 2, 2, 2, 2, 2, 4, 2,
+  0, 2, 2, 2, 2, 2, 2, 2,
+]
+
 let playerColor = "red"
 
 let colors = ["red", "orange", "yellow", "green", "blue", "purple", "pink"]
 
 let level = 0
-let levels = [levelOne, levelTwo, levelThree, levelFour, levelFive, levelSix, levelSeven, levelEight, levelNine, levelTen]
-let levelCols = [["cyan", "yellow", "brown"], ["darkgreen", "lime", "brown"], ["grey", "black", "lightgrey"], ["green", "blue", "maroon"], ["white", "lightblue", "grey"], ["darkred", "orange", "dimgrey"], ["cyan", "white", "cyan"], ["yellow", "yellow", "orange"], ["white", "white", playerColor], [colors[Math.floor(Math.random() * colors.length)], colors[Math.floor(Math.random() * colors.length)], colors[Math.floor(Math.random() * colors.length)]]]
+let levels = [levelOne, levelTwo, levelThree, levelFour, levelFive, levelSix, levelSeven, levelEight, levelNine, levelTen, levelEleven]
+let levelCols = [["cyan", "yellow", "brown"], ["darkgreen", "lime", "brown"], ["grey", "black", "lightgrey"], ["green", "blue", "maroon"], ["white", "lightblue", "grey"], ["darkred", "orange", "dimgrey"], ["cyan", "white", "cyan"], ["yellow", "yellow", "orange"], ["white", "white", playerColor], [colors[Math.floor(Math.random() * colors.length)], colors[Math.floor(Math.random() * colors.length)], colors[Math.floor(Math.random() * colors.length)]], ["white", "lightblue", "black"]]
 
 function drawScreen() {
   for (i=0; i<levels[level].length; i++) {
