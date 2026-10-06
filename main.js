@@ -266,13 +266,32 @@ let levelTen = [
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 ]
 
+let levelEleven = [
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+  0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+  0, 1, 1, 2, 1, 1, 2, 1, 1, 0,
+  0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+  0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+  0, 1, 2, 1, 3, 1, 1, 2, 1, 0,
+  0, 1, 2, 2, 2, 2, 2, 2, 1, 0,
+  0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+]
+
 let playerColor = "red"
 
 let colors = ["red", "orange", "yellow", "green", "blue", "purple", "pink"]
 
 let level = 0
-let levels = [levelOne, levelTwo, levelThree, levelFour, levelFive, levelSix, levelSeven, levelEight, levelNine, levelTen]
-let levelCols = [["cyan", "yellow", "brown"], ["darkgreen", "lime", "brown"], ["grey", "black", "lightgrey"], ["green", "blue", "maroon"], ["white", "lightblue", "grey"], ["darkred", "orange", "dimgrey"], ["cyan", "white", "cyan"], ["yellow", "yellow", "orange"], ["white", "white", playerColor], [colors[Math.floor(Math.random() * colors.length)], colors[Math.floor(Math.random() * colors.length)], colors[Math.floor(Math.random() * colors.length)]]]
+let levels = [levelOne, levelTwo, levelThree, levelFour, levelFive, levelSix, levelSeven, levelEight, levelNine, levelTen, levelEleven]
+let levelCols = [["cyan", "yellow", "brown"], ["darkgreen", "lime", "brown"], ["grey", "black", "lightgrey"], ["green", "blue", "maroon"], ["white", "lightblue", "grey"], ["darkred", "orange", "dimgrey"], ["cyan", "white", "cyan"], ["yellow", "yellow", "orange"], ["white", "white", playerColor], [colors[Math.floor(Math.random() * colors.length)], colors[Math.floor(Math.random() * colors.length)], colors[Math.floor(Math.random() * colors.length)]], ["black", playerColor, "black"]]
+
+
+ctx.font = "bold 40px Arial"
+ctx.textAlign = "center"
+ctx.lineWidth = 2
+levelNames = ["The Maze of Sand", "The Labyrinth of Trees", "The Cavern Trial", "The Wandering River", "The Snowy Trail", "The Volcano Escape", "The Sky of Illusion", "The Wandering Sun", "The Mirror Dimension", "The Blinding Escape", "You Win"]
 
 function drawScreen() {
   for (i=0; i<levels[level].length; i++) {
@@ -359,6 +378,7 @@ document.addEventListener("keydown", function(event) {
 function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   
+  
   player = {
     x: playerX,
     y: playerY,
@@ -372,8 +392,19 @@ function gameLoop() {
   player.index = levels[level].indexOf(3)
   
   levelCols[8][2] = player.color
+  levelCols[10][1] = player.color
 
   drawScreen()
+  
+  if (level != 2) {
+    ctx.fillStyle = levelCols[level][1]
+  }
+  if (level === 2) {
+    ctx.fillStyle = levelCols[level][2]
+  }
+  ctx.fillText(levelNames[level], canvas.width/2, 90)
+  ctx.strokeStyle = "black"
+  ctx.strokeText(levelNames[level], canvas.width/2, 90)
   
   ctx.fillStyle = player.color
   ctx.fillRect(player.x, player.y, player.width, player.height)
